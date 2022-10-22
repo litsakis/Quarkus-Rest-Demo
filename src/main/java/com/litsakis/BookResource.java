@@ -8,14 +8,18 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 @Path("/api/books")
 public class BookResource {
     @Inject
     BookRepository repository;
+    @Inject
+    Logger logger;
     @GET
   //  @Produces(MediaType.TEXT_PLAIN)
     public List<Book> getAllBooks() {
+        logger.info("Return All Books");
         return repository.getAllBooks();
     }
 
@@ -23,6 +27,8 @@ public class BookResource {
     @Path("count")
     @Produces(MediaType.TEXT_PLAIN)
     public int countAllBooks(){
+        logger.info("Return the number Books");
+
         return repository.getAllBooks().size();
 
     }
@@ -30,6 +36,7 @@ public class BookResource {
     @GET
     @Path("{id}")
     public Optional<Book> getBook(@PathParam("id") int id){
+        logger.info("Return single Book with id "+id);
 
 
         return repository.getBook(id);
