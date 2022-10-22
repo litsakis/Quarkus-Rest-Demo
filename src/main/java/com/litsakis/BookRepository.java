@@ -15,7 +15,6 @@ import java.util.Optional;
 @ApplicationScoped
 public class BookRepository {
 
-    @GET
   //  @Produces(MediaType.TEXT_PLAIN)
     public List<Book> getAllBooks() {
         return List.of(new Book(1,"Book Title","Alex Litsakis",2022,"IT"),
@@ -23,8 +22,7 @@ public class BookRepository {
                 new Book(3,"Book Title 3","Alex Litsakis",1990,"IT")
                 );
     }
-    @GET
-    @Path("{id}")
+
     public Optional<Book> getBook(@PathParam("id") int id){
 
 
