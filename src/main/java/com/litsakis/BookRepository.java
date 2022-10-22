@@ -1,5 +1,7 @@
 package com.litsakis;
 
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -14,12 +16,13 @@ import java.util.Optional;
 
 @ApplicationScoped
 public class BookRepository {
-
+    @ConfigProperty(name= "books.genre", defaultValue="IT")
+    String genre;
   //  @Produces(MediaType.TEXT_PLAIN)
     public List<Book> getAllBooks() {
-        return List.of(new Book(1,"Book Title","Alex Litsakis",2022,"IT"),
-                new Book(2,"Book Title 2","Alex Litsakis",2020,"IT"),
-                new Book(3,"Book Title 3","Alex Litsakis",1990,"IT")
+        return List.of(new Book(1,"Book Title","Alex Litsakis",2022,genre),
+                new Book(2,"Book Title 2","Alex Litsakis",2020,genre),
+                new Book(3,"Book Title 3","Alex Litsakis",1990,genre)
                 );
     }
 
