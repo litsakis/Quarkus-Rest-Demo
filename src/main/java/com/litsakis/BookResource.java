@@ -8,7 +8,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 import java.util.Optional;
-import java.util.logging.Logger;
+import org.jboss.logging.Logger;
 
 @Path("/api/books")
 public class BookResource {
